@@ -1,0 +1,36 @@
+# Copy to .github/workflows/weekly.yml in a PRIVATE repo that holds clients.yaml.
+# Add the DD_SMTP_* values under Settings → Secrets and variables → Actions.
+name: DomainDoctor weekly check-ups
+
+on:
+  schedule:
+    - cron: "0 7 * * 1"   # Mondays 07:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write          # to save last week's results back to the repo
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install ./monitor
+      - name: Check every client and email reports
+        env:
+          DD_SMTP_HOST: ${{ secrets.DD_SMTP_HOST }}
+          DD_SMTP_PORT: ${{ secrets.DD_SMTP_PORT }}
+          DD_SMTP_USER: ${{ secrets.DD_SMTP_USER }}
+          DD_SMTP_PASS: ${{ secrets.DD_SMTP_PASS }}
+          DD_FROM: ${{ secrets.DD_FROM }}
+        run: domaindoctor run --send
+      - name: Save this week's results for next week's comparison
+        run: |
+          git config user.name "DomainDoctor"
+          git config user.email "domaindoctor@users.noreply.github.com"
+          git add state
+          git commit -m "Weekly results $(date -u +%F)" || echo "no changes"
+          git push
