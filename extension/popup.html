@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>DomainDoctor</title>
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="top">
+    <span class="logo"><span class="logo-slip" aria-hidden="true"></span>Domain<b>Doctor</b></span>
+    <button class="mode" id="mode" type="button" title="Switch light or dark">◐</button>
+  </header>
+
+  <form id="form" autocomplete="off" novalidate>
+    <label for="domain">CHECKING</label>
+    <div class="row">
+      <input id="domain" placeholder="yourbusiness.com" spellcheck="false" autocapitalize="off">
+      <button class="go" id="go" type="submit" aria-label="Check">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+  </form>
+  <div class="err" id="err" role="alert"></div>
+
+  <main id="results" aria-live="polite">
+    <p class="idle">Open any business website and click DomainDoctor, or type a domain above.</p>
+  </main>
+
+  <footer class="foot">Public information only · nothing stored</footer>
+  <script src="checks.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

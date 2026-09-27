@@ -4,3 +4,4 @@ state/
 reports/
 __pycache__/
 *.egg-info/
+extension/dist/

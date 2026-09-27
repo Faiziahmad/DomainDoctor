@@ -10,6 +10,7 @@ It uses **public information only**: the same records every email service reads,
 |---|---|---|
 | **Free check-up** | A one-page site. Type a domain and get a printed "check-up slip" with a score, a stamp (*Protected / Partly protected / At risk*) and fixes for each line. | [`index.html`](index.html) |
 | **DomainDoctor Weekly** | Checks each client every week and emails a plain-English report of what changed and what to do. | [`monitor/`](monitor/) |
+| **Browser extension** | Click the icon on any business website and the check-up slip prints in a popup. Works in Chrome, Edge, Brave and Firefox. | [`extension/`](extension/) |
 | **Outreach playbook** | How to find clients, rules for staying trusted, and 3 email templates. | [`docs/OUTREACH.md`](docs/OUTREACH.md) |
 
 ## How it makes money
@@ -26,6 +27,17 @@ Free check-up page   →   $299 full check-up   →   DomainDoctor Weekly ($29�
 3. Share links like `…/DomainDoctor/?d=theirbusiness.com` so the check runs straight away.
 
 Your contact email and the check-up price are set at the top of the script in `index.html` (`CONTACT_EMAIL`, `CHECKUP_PRICE`).
+
+## Release the browser extension
+
+1. Run `extension/build.sh`. It creates `extension/dist/domaindoctor-extension-<version>.zip`.
+2. Upload that zip to the stores:
+   - **Chrome Web Store:** https://chrome.google.com/webstore/devconsole (one-time $5 developer fee)
+   - **Microsoft Edge Add-ons:** https://partner.microsoft.com/dashboard/microsoftedge (free)
+   - **Firefox Add-ons:** https://addons.mozilla.org/developers (free)
+3. Copy the listing text from [`extension/STORE.md`](extension/STORE.md) and use the images in `extension/store/`. The privacy policy is [`extension/PRIVACY.md`](extension/PRIVACY.md).
+
+To try it yourself first: open `chrome://extensions`, turn on Developer mode, click **Load unpacked** and pick the `extension/` folder.
 
 ## Run the weekly monitor
 

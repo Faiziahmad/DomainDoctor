@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "DomainDoctor — Domain Check-up",
+  "short_name": "DomainDoctor",
+  "version": "0.1.0",
+  "description": "Can someone send emails pretending to be this business? One click for a plain-English check-up of any website's domain.",
+  "homepage_url": "https://github.com/Faiziahmad/DomainDoctor",
+  "permissions": ["activeTab"],
+  "action": {
+    "default_title": "DomainDoctor: check this site",
+    "default_popup": "popup.html",
+    "default_icon": { "16": "icons/icon16.png", "32": "icons/icon32.png", "48": "icons/icon48.png", "128": "icons/icon128.png" }
+  },
+  "icons": { "16": "icons/icon16.png", "32": "icons/icon32.png", "48": "icons/icon48.png", "128": "icons/icon128.png" },
+  "browser_specific_settings": {
+    "gecko": { "id": "domaindoctor@faiziahmad", "strict_min_version": "121.0" }
+  }
+}
